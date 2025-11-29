@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our yoga classes, view the weekly schedule, and book your session">
+    <title>Yoga Classes - YogArouse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo"><span class="logo-emoji">🧘</span><span class="logo-text"><span class="logo-letter">Y</span><span class="logo-letter">o</span><span class="logo-letter">g</span><span class="logo-letter">A</span><span class="logo-letter">r</span><span class="logo-letter">o</span><span class="logo-letter">u</span><span class="logo-letter">s</span><span class="logo-letter">e</span></span></a>
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="classes.html" class="active">Yoga Classes</a></li>
+                        <li><a href="teacher-training.html">Teacher Training</a></li>
+                        <li><a href="retreats.html">Retreats & Workshops</a></li>
+                        <li><a href="gallery-blog.html">Gallery & Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Yoga Classes</h1>
+            <p>Find the perfect class for your practice level and schedule</p>
+        </div>
+    </section>
+
+    <!-- Class Types -->
+    <section class="class-types-section">
+        <div class="container">
+            <div class="class-types-grid">
+                <div class="class-type-card" data-type="vinyasa">
+                    <div class="class-type-icon">🌊</div>
+                    <h3>Vinyasa Flow</h3>
+                    <p>Dynamic, flowing sequences that link breath with movement</p>
+                    <span class="class-level">All Levels</span>
+                </div>
+                <div class="class-type-card" data-type="hatha">
+                    <div class="class-type-icon">☯️</div>
+                    <h3>Hatha Yoga</h3>
+                    <p>Gentle, foundational poses with focus on alignment and breathing</p>
+                    <span class="class-level">Beginner Friendly</span>
+                </div>
+                <div class="class-type-card" data-type="restorative">
+                    <div class="class-type-icon">🛌</div>
+                    <h3>Restorative Yoga</h3>
+                    <p>Relaxing poses held for extended periods using props for deep relaxation</p>
+                    <span class="class-level">All Levels</span>
+                </div>
+                <div class="class-type-card" data-type="prenatal">
+                    <div class="class-type-icon">🤰</div>
+                    <h3>Prenatal Yoga</h3>
+                    <p>Safe, supportive practice designed for expectant mothers</p>
+                    <span class="class-level">Specialty</span>
+                </div>
+                <div class="class-type-card" data-type="ashtanga">
+                    <div class="class-type-icon">🔥</div>
+                    <h3>Ashtanga</h3>
+                    <p>Challenging, structured sequences for building strength and discipline</p>
+                    <span class="class-level">Intermediate+</span>
+                </div>
+                <div class="class-type-card" data-type="online">
+                    <div class="class-type-icon">💻</div>
+                    <h3>Online Classes</h3>
+                    <p>Join live or on-demand classes from the comfort of your home</p>
+                    <span class="class-level">All Levels</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="schedule-filters">
+        <div class="container">
+            <div class="filters-wrapper">
+                <h2>Weekly Schedule</h2>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All Classes</button>
+                    <button class="filter-btn" data-filter="morning">Morning</button>
+                    <button class="filter-btn" data-filter="afternoon">Afternoon</button>
+                    <button class="filter-btn" data-filter="evening">Evening</button>
+                    <select class="filter-select" id="teacherFilter">
+                        <option value="all">All Teachers</option>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="michael">Michael Chen</option>
+                        <option value="emily">Emily Davis</option>
+                        <option value="david">David Martinez</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Grid -->
+    <section class="schedule-grid-section">
+        <div class="container">
+            <div class="schedule-table">
+                <div class="schedule-header">
+                    <div class="schedule-day">Monday</div>
+                    <div class="schedule-day">Tuesday</div>
+                    <div class="schedule-day">Wednesday</div>
+                    <div class="schedule-day">Thursday</div>
+                    <div class="schedule-day">Friday</div>
+                    <div class="schedule-day">Saturday</div>
+                    <div class="schedule-day">Sunday</div>
+                </div>
+                <div class="schedule-body">
+                    <!-- Time slots will be populated by JavaScript -->
+                    <div class="schedule-time-slot" data-time="06:00">
+                        <div class="time-label">6:00 AM</div>
+                        <div class="schedule-cell" data-day="monday" data-teacher="sarah" data-type="vinyasa" data-level="all">
+                            <div class="schedule-class">
+                                <h4>Vinyasa Flow</h4>
+                                <p>Sarah Johnson</p>
+                                <button class="btn-book-small" onclick="openBookingModal('vinyasa', '6:00 AM', 'Sarah Johnson', 'Monday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="wednesday" data-teacher="sarah" data-type="vinyasa" data-level="all">
+                            <div class="schedule-class">
+                                <h4>Vinyasa Flow</h4>
+                                <p>Sarah Johnson</p>
+                                <button class="btn-book-small" onclick="openBookingModal('vinyasa', '6:00 AM', 'Sarah Johnson', 'Wednesday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="friday" data-teacher="sarah" data-type="vinyasa" data-level="all">
+                            <div class="schedule-class">
+                                <h4>Vinyasa Flow</h4>
+                                <p>Sarah Johnson</p>
+                                <button class="btn-book-small" onclick="openBookingModal('vinyasa', '6:00 AM', 'Sarah Johnson', 'Friday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell"></div>
+                    </div>
+                    <div class="schedule-time-slot" data-time="09:00">
+                        <div class="time-label">9:00 AM</div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="tuesday" data-teacher="emily" data-type="hatha" data-level="beginner">
+                            <div class="schedule-class">
+                                <h4>Hatha Basics</h4>
+                                <p>Emily Davis</p>
+                                <button class="btn-book-small" onclick="openBookingModal('hatha', '9:00 AM', 'Emily Davis', 'Tuesday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="thursday" data-teacher="emily" data-type="hatha" data-level="beginner">
+                            <div class="schedule-class">
+                                <h4>Hatha Basics</h4>
+                                <p>Emily Davis</p>
+                                <button class="btn-book-small" onclick="openBookingModal('hatha', '9:00 AM', 'Emily Davis', 'Thursday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="saturday" data-teacher="emily" data-type="hatha" data-level="beginner">
+                            <div class="schedule-class">
+                                <h4>Hatha Basics</h4>
+                                <p>Emily Davis</p>
+                                <button class="btn-book-small" onclick="openBookingModal('hatha', '9:00 AM', 'Emily Davis', 'Saturday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                    </div>
+                    <div class="schedule-time-slot" data-time="18:00">
+                        <div class="time-label">6:00 PM</div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="tuesday" data-teacher="michael" data-type="restorative" data-level="all">
+                            <div class="schedule-class">
+                                <h4>Restorative</h4>
+                                <p>Michael Chen</p>
+                                <button class="btn-book-small" onclick="openBookingModal('restorative', '6:00 PM', 'Michael Chen', 'Tuesday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="thursday" data-teacher="michael" data-type="restorative" data-level="all">
+                            <div class="schedule-class">
+                                <h4>Restorative</h4>
+                                <p>Michael Chen</p>
+                                <button class="btn-book-small" onclick="openBookingModal('restorative', '6:00 PM', 'Michael Chen', 'Thursday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell"></div>
+                    </div>
+                    <div class="schedule-time-slot" data-time="19:00">
+                        <div class="time-label">7:00 PM</div>
+                        <div class="schedule-cell" data-day="monday" data-teacher="david" data-type="ashtanga" data-level="intermediate">
+                            <div class="schedule-class">
+                                <h4>Ashtanga</h4>
+                                <p>David Martinez</p>
+                                <button class="btn-book-small" onclick="openBookingModal('ashtanga', '7:00 PM', 'David Martinez', 'Monday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell" data-day="wednesday" data-teacher="david" data-type="ashtanga" data-level="intermediate">
+                            <div class="schedule-class">
+                                <h4>Ashtanga</h4>
+                                <p>David Martinez</p>
+                                <button class="btn-book-small" onclick="openBookingModal('ashtanga', '7:00 PM', 'David Martinez', 'Wednesday')">Book</button>
+                            </div>
+                        </div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell"></div>
+                        <div class="schedule-cell"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="booking-modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            <h2 id="modalTitle">Book Your Class</h2>
+            <div class="modal-body">
+                <div class="booking-info">
+                    <p><strong>Class:</strong> <span id="modalClass"></span></p>
+                    <p><strong>Day & Time:</strong> <span id="modalTime"></span></p>
+                    <p><strong>Teacher:</strong> <span id="modalTeacher"></span></p>
+                    <p><strong>Duration:</strong> 60-90 minutes</p>
+                    <p><strong>What to bring:</strong> Yoga mat, water bottle, comfortable clothes</p>
+                </div>
+                <div class="booking-options">
+                    <label>
+                        <input type="radio" name="bookingType" value="single" checked>
+                        <span>Single Class - $25</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="bookingType" value="pack5">
+                        <span>5-Class Pack - $110 ($22/class)</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="bookingType" value="pack10">
+                        <span>10-Class Pack - $200 ($20/class)</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="bookingType" value="monthly">
+                        <span>Monthly Unlimited - $150</span>
+                    </label>
+                </div>
+                <form class="booking-form" id="bookingForm">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <textarea placeholder="Any special requests or notes?" rows="3"></textarea>
+                    <button type="submit" class="btn btn-primary">Complete Booking</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>YogArouse</h4>
+                    <p>Find your inner balance through mindful yoga practice</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sagar.khanduri.71/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnWaSikxw2CtTpUMRI32w_h1DVuYFQTJ0hIklrdbMuoxll1y4SGSuPVnddjG0_aem_XwokxXWiEyQc4xyJaT_FlQ&ref=waios.fb_links_xma_control&_rdr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
+                        <a href="https://www.instagram.com/india_yoga_ashram/?igsh=OXN1MHlmOWVqeTg1#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="https://www.youtube.com/channel/UCQN050udtd-QLZgFUryu87A?app=desktop&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAOXfYpleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadZpKKTHDYK1OlQxEjfbD-HUNW5gVBMnSEiSWt1sy6jGWXXLhIZK49Wd12MbQ_aem_XwokxXWiEyQc4xyJaT_FlQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="classes.html">Classes</a></li>
+                        <li><a href="teacher-training.html">Teacher Training</a></li>
+                        <li><a href="retreats.html">Retreats</a></li>
+                        <li><a href="gallery-blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>📍 Rishikesh, India</li>
+                        <li>📞 +91 9897420501</li>
+                        <li>✉️ sagar@flowwithsagar.com</li>
+                        <li></li>
+                    </ul>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/sagar.khanduri.71/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnWaSikxw2CtTpUMRI32w_h1DVuYFQTJ0hIklrdbMuoxll1y4SGSuPVnddjG0_aem_XwokxXWiEyQc4xyJaT_FlQ&ref=waios.fb_links_xma_control&_rdr" target="_blank" rel="noopener noreferrer" class="footer-social-icon facebook-icon" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/india_yoga_ashram/?igsh=OXN1MHlmOWVqeTg1#" target="_blank" rel="noopener noreferrer" class="footer-social-icon instagram-icon" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCQN050udtd-QLZgFUryu87A?app=desktop&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAOXfYpleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadZpKKTHDYK1OlQxEjfbD-HUNW5gVBMnSEiSWt1sy6jGWXXLhIZK49Wd12MbQ_aem_XwokxXWiEyQc4xyJaT_FlQ" target="_blank" rel="noopener noreferrer" class="footer-social-icon youtube-icon" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 YogArouse. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#terms">Terms</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#health-policy">Health Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="mobile-cta">
+        <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919897420501" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+        <span class="whatsapp-icon">💬</span>
+    </a>
+
+</body>
+</html>
+
