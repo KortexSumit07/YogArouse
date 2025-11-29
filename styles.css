@@ -676,10 +676,57 @@ body {
     box-shadow: var(--shadow);
 }
 
+.testimonial-stars-link {
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.testimonial-stars-link:hover {
+    transform: scale(1.1);
+}
+
+.testimonial-stars-link:hover .testimonial-stars {
+    filter: brightness(1.2);
+}
+
 .testimonial-stars {
     color: #ffc107;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Tooltip for star ratings */
+.testimonial-stars-link::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background: transparent;
+    color: #000000;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.testimonial-stars-link::after {
+    display: none;
+}
+
+.testimonial-stars-link:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
 }
 
 .testimonial-text {
@@ -3003,6 +3050,86 @@ body {
 .stat-label {
     font-size: 0.95rem;
     opacity: 0.9;
+}
+
+/* Rating Link with Tooltip */
+.rating-link {
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    color: inherit;
+}
+
+.rating-link:hover {
+    transform: scale(1.05);
+}
+
+.rating-stars {
+    color: #ffc107;
+    font-size: 1.5rem;
+    margin-left: 0.3rem;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+.rating-link:hover .rating-stars {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.8),
+                 0 0 20px rgba(255, 193, 7, 0.6),
+                 0 0 30px rgba(255, 193, 7, 0.4);
+    animation: starGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes starGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 193, 7, 0.8),
+                     0 0 20px rgba(255, 193, 7, 0.6),
+                     0 0 30px rgba(255, 193, 7, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(255, 193, 7, 1),
+                     0 0 25px rgba(255, 193, 7, 0.8),
+                     0 0 35px rgba(255, 193, 7, 0.6),
+                     0 0 45px rgba(255, 193, 7, 0.4);
+    }
+}
+
+.rating-link:hover .stat-number {
+    text-shadow: 0 0 8px rgba(255, 193, 7, 0.5),
+                 0 0 15px rgba(255, 193, 7, 0.3);
+}
+
+/* Tooltip for rating link */
+.rating-link::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background: transparent;
+    color: #000000;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.rating-link::after {
+    display: none;
+}
+
+.rating-link:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
 }
 
 .stat-divider {
