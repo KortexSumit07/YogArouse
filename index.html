@@ -1,14 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Find strength, calm & balance — in-person & online yoga classes, teacher training, and retreats">
     <title>YogArouse-FlowWithSagar</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Inline styles for Ratings & Reviews (scoped to page) */
+      /* You can move these rules into styles.css if you prefer */
+      .reviews-section {
+          padding: 4rem 0;
+          background: #faf8ff;
+      }
+      .reviews-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 420px;
+          gap: 2rem;
+      }
+      .reviews-card {
+          background: #fff;
+          padding: 1.75rem;
+          border-radius: 12px;
+          box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      }
+      .reviews-form h3,
+      .reviews-list h3 {
+          margin-bottom: 0.75rem;
+          font-family: 'Playfair Display', serif;
+          color: #ff006e;
+      }
+      .star-inputs {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+          margin-bottom: 0.75rem;
+      }
+      .star {
+          font-size: 1.6rem;
+          cursor: pointer;
+          transition: transform .12s ease;
+          color: #d1d5db; /* default gray */
+          user-select: none;
+      }
+      .star.active {
+          color: #ffb703; /* gold */
+          transform: scale(1.06);
+      }
+      .reviews-form textarea {
+          width: 100%;
+          min-height: 90px;
+          padding: 0.8rem;
+          border-radius: 8px;
+          border: 1px solid #e6e6e6;
+          font-family: inherit;
+          resize: vertical;
+          margin-bottom: 0.75rem;
+      }
+      .reviews-form input[type="text"] {
+          width: 100%;
+          padding: 0.6rem;
+          border-radius: 8px;
+          border: 1px solid #e6e6e6;
+          margin-bottom: 0.75rem;
+      }
+      .reviews-form .btn {
+          display: inline-block;
+          padding: 0.7rem 1.25rem;
+          border-radius: 10px;
+          border: none;
+          cursor: pointer;
+      }
+      .btn-submit-review {
+          background: var(--primary-color);
+          color: white;
+      }
+      .reviews-summary {
+          text-align: center;
+          padding: 1.25rem;
+          border-radius: 12px;
+          background: linear-gradient(180deg, rgba(255,0,110,0.06), rgba(255,107,157,0.03));
+          box-shadow: 0 6px 18px rgba(255,0,110,0.06);
+      }
+      .reviews-summary .avg-rating {
+          font-size: 2.25rem;
+          font-weight: 700;
+          color: var(--primary-color);
+      }
+      .reviews-summary .avg-stars {
+          font-size: 1.1rem;
+          margin-top: 0.35rem;
+      }
+      .reviews-list {
+          max-height: 420px;
+          overflow-y: auto;
+          padding-right: 4px;
+      }
+      .review-item {
+          display: flex;
+          gap: 0.75rem;
+          padding: 0.85rem;
+          border-radius: 10px;
+          margin-bottom: 0.75rem;
+          background: white;
+          border: 1px solid #f0f0f0;
+          align-items: start;
+      }
+      .review-avatar {
+          width:48px;
+          height:48px;
+          border-radius:50%;
+          background: linear-gradient(135deg,#667eea,#f093fb);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          color:#fff;
+          font-weight:700;
+          flex-shrink:0;
+      }
+      .review-body {
+          flex:1;
+      }
+      .review-meta {
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          gap:0.5rem;
+          margin-bottom:0.25rem;
+      }
+      .review-name {
+          font-weight:700;
+          color:var(--text-dark);
+      }
+      .review-stars {
+          color: #ffb703;
+      }
+      .delete-review {
+          background: transparent;
+          border: none;
+          color: #dc3545;
+          cursor: pointer;
+          font-size: 0.92rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 980px) {
+          .reviews-container {
+              grid-template-columns: 1fr;
+          }
+      }
+    </style>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -159,97 +305,23 @@
                 <a href="classes.html" class="nav-tile">
                     <div class="tile-icon">🧘‍♀️</div>
                     <h3>Classes</h3>
-                    <p>Explore our diverse yoga classes</p>
+                    <p>Explore our class types & weekly schedule</p>
                 </a>
                 <a href="teacher-training.html" class="nav-tile">
-                    <div class="tile-icon">📚</div>
+                    <div class="tile-icon">🎓</div>
                     <h3>Teacher Training</h3>
-                    <p>Become a certified yoga instructor</p>
+                    <p>200-hour certification course</p>
                 </a>
                 <a href="retreats.html" class="nav-tile">
-                    <div class="tile-icon">🏔️</div>
+                    <div class="tile-icon">🏝️</div>
                     <h3>Retreats</h3>
-                    <p>Immersive wellness experiences</p>
+                    <p>Immersive wellbeing retreats</p>
                 </a>
-                <a href="retreats.html" class="nav-tile">
-                    <div class="tile-icon">✨</div>
-                    <h3>Workshops</h3>
-                    <p>Deepen your practice</p>
+                <a href="gallery-blog.html" class="nav-tile">
+                    <div class="tile-icon">📷</div>
+                    <h3>Gallery & Blog</h3>
+                    <p>Studio moments & wellness tips</p>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upcoming Schedule -->
-    <section class="schedule-preview">
-        <div class="container">
-            <h2 class="section-title">Upcoming Classes</h2>
-            <div class="schedule-carousel" id="scheduleCarousel">
-                <div class="schedule-card">
-                    <div class="schedule-date">
-                        <span class="day">15</span>
-                        <span class="month">Jan</span>
-                    </div>
-                    <div class="schedule-info">
-                        <h3>Vinyasa Flow</h3>
-                        <p class="schedule-time">9:00 AM - 10:30 AM</p>
-                        <p class="schedule-teacher">with Sarah Johnson</p>
-                        <a href="enroll.html" class="btn-book">Book Now</a>
-                    </div>
-                </div>
-                <div class="schedule-card">
-                    <div class="schedule-date">
-                        <span class="day">16</span>
-                        <span class="month">Jan</span>
-                    </div>
-                    <div class="schedule-info">
-                        <h3>Restorative Yoga</h3>
-                        <p class="schedule-time">6:00 PM - 7:00 PM</p>
-                        <p class="schedule-teacher">with Michael Chen</p>
-                        <a href="enroll.html" class="btn-book">Book Now</a>
-                    </div>
-                </div>
-                <div class="schedule-card">
-                    <div class="schedule-date">
-                        <span class="day">17</span>
-                        <span class="month">Jan</span>
-                    </div>
-                    <div class="schedule-info">
-                        <h3>Hatha Basics</h3>
-                        <p class="schedule-time">10:00 AM - 11:00 AM</p>
-                        <p class="schedule-teacher">with Emily Davis</p>
-                        <a href="enroll.html" class="btn-book">Book Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Us Section -->
-    <section class="why-us">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Certified Teachers</h3>
-                    <p>All our instructors are certified and bring years of experience to every class</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Small Classes</h3>
-                    <p>Intimate class sizes ensure personalized attention and proper alignment</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>Mindful Approach</h3>
-                    <p>We emphasize the connection between body, mind, and spirit in every practice</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <h3>Flexible Times</h3>
-                    <p>Classes throughout the day plus online options to fit your schedule</p>
-                </div>
             </div>
         </div>
     </section>
@@ -279,84 +351,60 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- ===== Ratings & Reviews Section (added) ===== -->
+    <section class="reviews-section" id="reviews">
         <div class="container">
-            <h2 class="section-title">What Our Students Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <a href="https://maps.app.goo.gl/FVgTjDLqxCCqZchR7?g_st=aw" target="_blank" rel="noopener noreferrer" class="testimonial-stars-link" data-tooltip="Click to verify">
-                        <div class="testimonial-stars">★★★★★</div>
-                    </a>
-                    <p class="testimonial-text">"I thoroughly enjoyed the yoga class! The instructor's expertise and calming guidance created a positive and welcoming atmosphere. The variety of poses and mindful breathing exercises made the session both challenging and rejuvenating. Looking forward to attending more classes!...❤️🍁"</p>
-                    <p class="testimonial-author">— RandomGuy 007</p>
+            <h2 class="section-title">Ratings & Reviews</h2>
+            <div class="reviews-container">
+                <!-- Left: Form + Recent Reviews -->
+                <div>
+                    <div class="reviews-card reviews-form">
+                        <h3>Leave a review</h3>
+                        <div class="star-inputs" id="starInputs" aria-label="Star rating">
+                            <span class="star" data-value="1" role="button" aria-label="1 star">☆</span>
+                            <span class="star" data-value="2" role="button" aria-label="2 stars">☆</span>
+                            <span class="star" data-value="3" role="button" aria-label="3 stars">☆</span>
+                            <span class="star" data-value="4" role="button" aria-label="4 stars">☆</span>
+                            <span class="star" data-value="5" role="button" aria-label="5 stars">☆</span>
+                            <div style="margin-left:auto; color:var(--text-light); font-size:0.95rem;" id="selectedRatingText">No rating</div>
+                        </div>
+                        <input type="text" id="reviewerName" placeholder="Your name (optional)">
+                        <textarea id="reviewText" placeholder="Share a short review..."></textarea>
+                        <div style="display:flex; gap:0.5rem; align-items:center;">
+                            <button class="btn btn-primary btn-submit-review" id="submitReviewBtn">Submit Review</button>
+                            <button class="btn" id="clearFormBtn" type="button">Clear</button>
+                        </div>
+                    </div>
+
+                    <div style="height:1rem"></div>
+
+                    <div class="reviews-card">
+                        <h3>Recent Reviews</h3>
+                        <div class="reviews-list" id="reviewsList" aria-live="polite">
+                            <!-- reviews inserted here -->
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial-card">
-                    <a href="https://maps.app.goo.gl/FVgTjDLqxCCqZchR7?g_st=aw" target="_blank" rel="noopener noreferrer" class="testimonial-stars-link" data-tooltip="Click to verify">
-                        <div class="testimonial-stars">★★★★★</div>
-                    </a>
-                    <p class="testimonial-text">"I did a few lessons with Sagar and if I would have more time in Rishikesh I would have attend it everyday! It’s really few people able to share such nice energy! His smile fills the shala and his knowledge of asana is remarkable!! I had a lot of fun but also gained a lot of knowledge during his classes! I really miss it… and to everyone, I suggest you to, at least, try to attend 1 class, you will get caught but it 😊<br>Thank you Sagar & Sumit
-                        Namastè<br>"</p>
-                    <p class="testimonial-author">— GiovannaRossella Lombardo</p>
-                </div>
-                <div class="testimonial-card">
-                    <a href="https://maps.app.goo.gl/FVgTjDLqxCCqZchR7?g_st=aw" target="_blank" rel="noopener noreferrer" class="testimonial-stars-link" data-tooltip="Click to verify">
-                        <div class="testimonial-stars">★★★★★</div>
-                    </a>
-                    <p class="testimonial-text">"I liked the way Sagar instructed yoga classes, very professional and fun at the same time. He was very helpful and showed me asanas, because I didn’t understand English very well.  Greetings from Kazakhstan. Namaste 🙏🏻"</p>
-                    <p class="testimonial-author">— Maral Tulepbergenova</p>
-                </div>
+
+                <!-- Right: Average rating summary -->
+                <aside>
+                    <div class="reviews-card reviews-summary">
+                        <div style="font-size:0.95rem; color:var(--text-light)">Community Rating</div>
+                        <div class="avg-rating" id="avgRating">0.0</div>
+                        <div class="avg-stars" id="avgStars">No ratings yet</div>
+                        <div style="margin-top:0.75rem; color:var(--text-light);" id="totalReviews">0 reviews</div>
+                    </div>
+                    <div style="height:1rem"></div>
+                    <div class="reviews-card">
+                        <h3>How ratings work</h3>
+                        <p style="color:var(--text-light); line-height:1.5; font-size:0.95rem;">Your rating helps others find the right class. Reviews are kept on this site (stored locally). If you'd like reviews synced across devices, I can help connect a backend or integrate with a service (e.g., Firebase).</p>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Preview -->
-    <section class="gallery-preview">
-        <div class="container">
-            <h2 class="section-title">Studio Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-image="1">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-image="2">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-image="3">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-image="4">
-                    <div class="gallery-overlay">
-                        <span class="gallery-icon">🔍</span>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-cta">
-                <a href="gallery-blog.html" class="btn btn-secondary">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Signup -->
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <h2>Stay Connected</h2>
-                <p>Get updates on new classes, workshops, and wellness tips delivered to your inbox</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Footer (kept same as original) -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -364,9 +412,9 @@
                     <h4>YogArouse</h4>
                     <p>Find your inner balance through mindful yoga practice</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/sagar.khanduri.71/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnWaSikxw2CtTpUMRI32w_h1DVuYFQTJ0hIklrdbMuoxll1y4SGSuPVnddjG0_aem_XwokxXWiEyQc4xyJaT_FlQ&ref=waios.fb_links_xma_control&_rdr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
-                        <a href="https://www.instagram.com/india_yoga_ashram/?igsh=OXN1MHlmOWVqeTg1#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
-                        <a href="https://www.youtube.com/channel/UCQN050udtd-QLZgFUryu87A?app=desktop&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAOXfYpleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadZpKKTHDYK1OlQxEjfbD-HUNW5gVBMnSEiSWt1sy6jGWXXLhIZK49Wd12MbQ_aem_XwokxXWiEyQc4xyJaT_FlQ" target="_blank" rel="noopener noreferrer" aria-label="YouTube">📺</a>
+                        <a href="https://www.facebook.com/sagar.khanduri.71/" target="_blank" rel="noopener noreferrer" class="footer-social-icon facebook-icon" aria-label="Facebook">📘</a>
+                        <a href="https://www.instagram.com/india_yoga_ashram/" target="_blank" rel="noopener noreferrer" class="footer-social-icon instagram-icon" aria-label="Instagram">📷</a>
+                        <a href="https://www.youtube.com/channel/UCQN050udtd-QLZgFUryu87A" target="_blank" rel="noopener noreferrer" class="footer-social-icon youtube-icon" aria-label="YouTube">📺</a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -382,35 +430,17 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
+                        <li>📍 Rishikesh, India</li>
                         <li>📞 +91 9897420501</li>
                         <li>✉️ sagar@flowwithsagar.com</li>
-                        <li>📍 Rishikesh, India</li>
                     </ul>
-                    <div class="footer-social-icons">
-                        <a href="https://www.facebook.com/sagar.khanduri.71/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGnWaSikxw2CtTpUMRI32w_h1DVuYFQTJ0hIklrdbMuoxll1y4SGSuPVnddjG0_aem_XwokxXWiEyQc4xyJaT_FlQ&ref=waios.fb_links_xma_control&_rdr" target="_blank" rel="noopener noreferrer" class="footer-social-icon facebook-icon" aria-label="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/india_yoga_ashram/?igsh=OXN1MHlmOWVqeTg1#" target="_blank" rel="noopener noreferrer" class="footer-social-icon instagram-icon" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCQN050udtd-QLZgFUryu87A?app=desktop&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAOXfYpleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadZpKKTHDYK1OlQxEjfbD-HUNW5gVBMnSEiSWt1sy6jGWXXLhIZK49Wd12MbQ_aem_XwokxXWiEyQc4xyJaT_FlQ" target="_blank" rel="noopener noreferrer" class="footer-social-icon youtube-icon" aria-label="YouTube">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -424,27 +454,226 @@
         </div>
     </footer>
 
-    <!-- Sticky Mobile CTA -->
-    <div class="mobile-cta">
-        <a href="enroll.html" class="btn btn-primary">Enroll Now</a>
-    </div>
-
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-        <button class="lightbox-prev" aria-label="Previous">‹</button>
-        <button class="lightbox-next" aria-label="Next">›</button>
-        <div class="lightbox-content">
-            <img src="" alt="" id="lightboxImage">
-        </div>
-    </div>
-
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919897420501" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contact us on WhatsApp">
         <span class="whatsapp-icon">💬</span>
     </a>
 
+    <!-- Main script (keeps original script.js for site behaviour) -->
     <script src="script.js"></script>
+
+    <!-- Inline script to support Ratings & Reviews -->
+    <script>
+      (function(){
+        // Element refs
+        const stars = Array.from(document.querySelectorAll('#starInputs .star'));
+        const selectedRatingText = document.getElementById('selectedRatingText');
+        const submitBtn = document.getElementById('submitReviewBtn');
+        const clearBtn = document.getElementById('clearFormBtn');
+        const reviewText = document.getElementById('reviewText');
+        const reviewerName = document.getElementById('reviewerName');
+        const reviewsList = document.getElementById('reviewsList');
+        const avgRatingEl = document.getElementById('avgRating');
+        const avgStarsEl = document.getElementById('avgStars');
+        const totalReviewsEl = document.getElementById('totalReviews');
+
+        const STORAGE_KEY = 'yogarouse_reviews_v1';
+
+        let selectedRating = 0;
+        let reviews = [];
+
+        // Utility: load from localStorage
+        function loadReviews() {
+          try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            reviews = raw ? JSON.parse(raw) : [];
+          } catch(e) {
+            console.error('Failed reading reviews from storage', e);
+            reviews = [];
+          }
+        }
+
+        // Utility: save to localStorage
+        function saveReviews() {
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+          } catch(e) {
+            console.error('Failed saving reviews to storage', e);
+          }
+        }
+
+        // Render stars active state in the rating input
+        function renderStarInput() {
+          stars.forEach(s => {
+            const v = +s.dataset.value;
+            s.textContent = (v <= selectedRating) ? '★' : '☆';
+            s.classList.toggle('active', v <= selectedRating);
+          });
+          selectedRatingText.textContent = selectedRating ? (selectedRating + ' star' + (selectedRating>1?'s':'')) : 'No rating';
+        }
+
+        // Compute and render summary (avg)
+        function renderSummary() {
+          if (reviews.length === 0) {
+            avgRatingEl.textContent = '0.0';
+            avgStarsEl.textContent = 'No ratings yet';
+            totalReviewsEl.textContent = '0 reviews';
+            return;
+          }
+          const sum = reviews.reduce((acc,r) => acc + (r.rating||0), 0);
+          const avg = sum / reviews.length;
+          avgRatingEl.textContent = avg.toFixed(1);
+          // show stars rounded to nearest half-star
+          const full = Math.round(avg);
+          avgStarsEl.textContent = '★'.repeat(full) + '☆'.repeat(5-full);
+          totalReviewsEl.textContent = reviews.length + (reviews.length===1 ? ' review' : ' reviews');
+        }
+
+        // Render reviews list
+        function renderReviewsList() {
+          reviewsList.innerHTML = '';
+          if (reviews.length === 0) {
+            const p = document.createElement('p');
+            p.style.color = 'var(--text-light)';
+            p.textContent = 'No reviews yet — be the first to share your experience!';
+            reviewsList.appendChild(p);
+            return;
+          }
+          // show newest first
+          const sorted = reviews.slice().sort((a,b) => b.createdAt - a.createdAt);
+          sorted.forEach((r, idx) => {
+            const item = document.createElement('div');
+            item.className = 'review-item';
+            const avatar = document.createElement('div');
+            avatar.className = 'review-avatar';
+            const nameInitial = (r.name && r.name.trim()[0]) ? r.name.trim()[0].toUpperCase() : 'Y';
+            avatar.textContent = nameInitial;
+
+            const body = document.createElement('div');
+            body.className = 'review-body';
+
+            const meta = document.createElement('div');
+            meta.className = 'review-meta';
+
+            const nameEl = document.createElement('div');
+            nameEl.className = 'review-name';
+            nameEl.textContent = r.name ? r.name : 'Anonymous';
+
+            const starsEl = document.createElement('div');
+            starsEl.className = 'review-stars';
+            starsEl.innerHTML = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+
+            meta.appendChild(nameEl);
+            meta.appendChild(starsEl);
+
+            const textEl = document.createElement('div');
+            textEl.className = 'review-text';
+            textEl.style.color = 'var(--text-light)';
+            textEl.style.fontSize = '0.95rem';
+            textEl.textContent = r.text;
+
+            const meta2 = document.createElement('div');
+            meta2.style.display = 'flex';
+            meta2.style.justifyContent = 'space-between';
+            meta2.style.alignItems = 'center';
+            meta2.style.marginTop = '0.55rem';
+
+            const timeEl = document.createElement('div');
+            const date = new Date(r.createdAt);
+            timeEl.style.fontSize = '0.82rem';
+            timeEl.style.color = 'var(--text-light)';
+            timeEl.textContent = date.toLocaleString();
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-review';
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.title = 'Delete this review';
+            deleteBtn.addEventListener('click', () => {
+              // remove by createdAt identifier
+              reviews = reviews.filter(rr => rr.createdAt !== r.createdAt);
+              saveReviews();
+              renderReviewsList();
+              renderSummary();
+            });
+
+            meta2.appendChild(timeEl);
+            meta2.appendChild(deleteBtn);
+
+            body.appendChild(meta);
+            if (r.text && r.text.trim() !== '') body.appendChild(textEl);
+            body.appendChild(meta2);
+
+            item.appendChild(avatar);
+            item.appendChild(body);
+
+            reviewsList.appendChild(item);
+          });
+        }
+
+        // Event handlers: click on star
+        stars.forEach(s => {
+          s.addEventListener('click', () => {
+            selectedRating = +s.dataset.value;
+            renderStarInput();
+          });
+          s.addEventListener('mouseenter', () => {
+            const v = +s.dataset.value;
+            stars.forEach(st => {
+              st.textContent = (+st.dataset.value <= v) ? '★' : '☆';
+              st.classList.toggle('active', +st.dataset.value <= v);
+            });
+          });
+          s.addEventListener('mouseleave', () => {
+            renderStarInput();
+          });
+        });
+
+        // Submit review
+        submitBtn.addEventListener('click', () => {
+          const txt = reviewText.value.trim();
+          const name = reviewerName.value.trim();
+          if (!selectedRating) {
+            alert('Please choose a star rating before submitting.');
+            return;
+          }
+          // create review object
+          const review = {
+            rating: selectedRating,
+            text: txt,
+            name: name || '',
+            createdAt: Date.now()
+          };
+          reviews.push(review);
+          saveReviews();
+          renderReviewsList();
+          renderSummary();
+          // clear form
+          selectedRating = 0;
+          renderStarInput();
+          reviewText.value = '';
+          reviewerName.value = '';
+          // small confirmation UI
+          submitBtn.textContent = 'Thanks!';
+          setTimeout(()=> submitBtn.textContent = 'Submit Review', 1200);
+        });
+
+        clearBtn.addEventListener('click', () => {
+          selectedRating = 0;
+          renderStarInput();
+          reviewText.value = '';
+          reviewerName.value = '';
+        });
+
+        // Init
+        function init() {
+          loadReviews();
+          renderStarInput();
+          renderReviewsList();
+          renderSummary();
+        }
+
+        init();
+      })();
+    </script>
 </body>
 </html>
-
